@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Portal FIC - Turmas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Exemplo de FontAwesome para ícones (logout, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Exemplo de CSS próprio -->
+  <link rel="stylesheet" href="/css/portal.css" />
+
+</head>
+<body>
+  <!-- Sidebar lateral -->
+  <aside class="sidebar">
+    <div class="logo-container">
+      <!-- Ajuste a URL da imagem do SENAI -->
+      <img src="/img/senai-logo.png" alt="SENAI Logo" class="senai-logo">
+    </div>
+
+    <nav class="menu">
+      <!-- Link externo direto para Diário FIC -->
+      <a href="https://diariofic.sp.senai.br/" target="_blank" class="menu-item">
+        <i class="fa fa-external-link-alt"></i> Diário FIC
+      </a>
+      <!-- Botão que abre a seção de upload de Excel -->
+      <button class="menu-item" onclick="openUpload()">
+        <i class="fa fa-file-excel"></i> Carga Horária
+      </button>
+      <!-- Botão que abre a seção de calendário -->
+      <button class="menu-item" onclick="openCalendar()">
+        <i class="fa fa-calendar-alt"></i> Calendário
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Área de conteúdo principal -->
+  <div class="main-content">
+    <header class="topbar">
+      <!-- Nome do usuário à direita -->
+      <div class="user-info">
+        Usuário: <strong>RODRIGO HENRIQUE CORREA</strong>
+      </div>
+      <!-- Botão de logout (exemplo) -->
+      <button class="logout-btn" onclick="window.location.href='/Login/Logout'">
+        <i class="fas fa-power-off"></i>
+      </button>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="content-area">
+      <h1>Bem-vindo ao Portal FIC!</h1>
+      <p>Selecione uma das opções no menu lateral.</p>
+
+      <!-- Seção de Upload (oculta por padrão) -->
+      <section id="upload-section" class="hidden">
+        <h2>Upload de Planilha</h2>
+        <form action="/upload-excel" method="POST" enctype="multipart/form-data">
+          <label for="file">Selecione o arquivo (Excel ou CSV):</label><br><br>
+          <input type="file" name="file" id="file" accept=".xlsx,.csv" required /><br><br>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+
+      <!-- Seção de Calendário (oculta por padrão) -->
+      <section id="calendar-section" class="hidden">
+        <h2>Calendário Completo</h2>
+        <!-- Exemplo simples. Substitua por um plugin JS de calendário, se preferir -->
+        <p>(Em desenvolvimento... Você pode integrar um plugin de calendário aqui.)</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript básico -->
+  <script>
+    function openUpload() {
+      // Mostra a seção de upload e esconde a de calendário
+      document.getElementById('upload-section').classList.remove('hidden');
+      document.getElementById('calendar-section').classList.add('hidden');
+    }
+
+    function openCalendar() {
+      // Mostra a seção de calendário e esconde a de upload
+      document.getElementById('calendar-section').classList.remove('hidden');
+      document.getElementById('upload-section').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

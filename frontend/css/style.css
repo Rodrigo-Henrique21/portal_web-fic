@@ -1,0 +1,102 @@
+/*************************************************
+  Estilos Globais (se já tiver, pode ajustar)
+**************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/*************************************************
+  Tela de Login Inspirada no SENAI
+**************************************************/
+/* Define fundo e layout principal */
+.senai-login-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #F2F2F2; /* cor de fundo clara, pode usar imagem se preferir */
+}
+
+/* Cabeçalho (banner ou logo) */
+.senai-login-header {
+  background: #C00000; /* cor vermelha SENAI (aprox.) */
+  padding: 20px;
+  text-align: center;
+}
+.senai-logo {
+  max-height: 60px;
+  /* Ajuste conforme a imagem real */
+}
+
+/* Área Principal: centraliza o formulário */
+.senai-login-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container do formulário de login */
+.senai-login-container {
+  width: 320px;
+  padding: 25px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Título do formulário */
+.senai-login-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Agrupamento de inputs (rótulo + campo) */
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Botão "Entrar" */
+.senai-login-container button {
+  width: 100%;
+  padding: 12px;
+  background: #C00000;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.senai-login-container button:hover {
+  background: #A00000; /* tom mais escuro no hover */
+}
+
+/* Rodapé */
+.senai-login-footer {
+  text-align: center;
+  padding: 10px;
+  background: #ECECEC;
+  color: #666;
+  font-size: 0.9rem;
+}
