@@ -41,7 +41,6 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        # Exemplo simples de formulário
         return """
         <html>
         <body>
@@ -88,7 +87,7 @@ def logout():
 
 
 ############################
-# Exemplo de Rota Protegida
+# Rota Protegida
 ############################
 @app.route('/carga-horaria')
 def carga_horaria():
@@ -182,7 +181,7 @@ def calendario():
 
 
 ############################
-# Rotas para servir CSS/JS/IMG de "frontend" (rotas personalizadas)
+# Rotas para servir CSS/JS/IMG de "frontend"
 ############################
 @app.route('/calendar/<path:filename>')
 def serve_calendar(filename):

@@ -1,5 +1,5 @@
 /*************************************************
-  Estilos Globais (se já tiver, pode ajustar)
+  Estilos Globais
 **************************************************/
 * {
   margin: 0;
@@ -12,7 +12,7 @@ body, html {
 }
 
 /*************************************************
-  Tela de Login Inspirada no SENAI
+  Tela de Login
 **************************************************/
 /* Define fundo e layout principal */
 .senai-login-body {
@@ -22,7 +22,7 @@ body, html {
   background: #F2F2F2; /* cor de fundo clara, pode usar imagem se preferir */
 }
 
-/* Cabeçalho (banner ou logo) */
+/* Cabeçalho */
 .senai-login-header {
   background: #C00000; /* cor vermelha SENAI (aprox.) */
   padding: 20px;
