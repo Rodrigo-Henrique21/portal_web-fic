@@ -7,7 +7,8 @@ app = Flask(__name__)
 app.secret_key = 'chave-secreta-flask'  # chave de sessão
 
 # Caminhos
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.join(BASE_DIR, '..', 'frontend')
 DB_PATH = os.path.join(BASE_DIR, '..', 'db', 'users.json')
 UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads')
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -17,6 +18,7 @@ def load_users():
     """Carrega o JSON com os usuários e retorna como dict."""
     with open(DB_PATH, 'r', encoding='utf-8') as f:
         return json.load(f)
+
 
 @app.route('/')
 def index():
@@ -31,6 +33,7 @@ def index():
     <p><a href='/calendario'>Ver Calendário</a></p>
     <p><a href='/logout'>Logout</a></p>
     """
+
 
 ############################
 # Rota de LOGIN
@@ -74,6 +77,7 @@ def login():
         # Se chegou aqui, falhou login
         return "Credenciais inválidas! <a href='/login'>Tentar novamente</a>"
 
+
 ############################
 # Rota de LOGOUT
 ############################
@@ -81,6 +85,7 @@ def login():
 def logout():
     session.clear()
     return "Logout efetuado! <a href='/login'>Login</a>"
+
 
 ############################
 # Exemplo de Rota Protegida
@@ -121,6 +126,7 @@ def carga_horaria():
     {% endif %}
     """, table_html=table_html, is_admin=is_admin)
 
+
 ############################
 # Rota de Upload Excel
 ############################
@@ -137,6 +143,7 @@ def upload_excel():
     file.save(save_path)
 
     return redirect(url_for('carga_horaria'))
+
 
 ############################
 # Rota de Calendário
@@ -173,12 +180,13 @@ def calendario():
     </html>
     """
 
+
 ############################
-# Se quiser servir CSS/JS/IMG de pasta "frontend", rotas personalizadas:
+# Rotas para servir CSS/JS/IMG de "frontend" (rotas personalizadas)
 ############################
 @app.route('/calendar/<path:filename>')
 def serve_calendar(filename):
-    # /calendar/jquery.bootstrap.year.calendar.js e .css
+    # Servindo arquivos de /frontend/js para calendário, ajuste se necessário
     return send_from_directory(os.path.join(FRONTEND_DIR, 'js'), filename)
 
 @app.route('/js/<path:filename>')
@@ -192,6 +200,7 @@ def serve_css(filename):
 @app.route('/img/<path:filename>')
 def serve_img(filename):
     return send_from_directory(os.path.join(FRONTEND_DIR, 'img'), filename)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
