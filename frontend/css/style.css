@@ -6,7 +6,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-body, html {
+
+body,
+html {
   height: 100%;
   font-family: Arial, sans-serif;
 }
@@ -19,15 +21,25 @@ body, html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #F2F2F2; /* cor de fundo clara, pode usar imagem se preferir */
+  background: #F2F2F2;
+  justify-content: space-between;
+  /* cor de fundo clara, pode usar imagem se preferir */
 }
 
 /* Cabeçalho (banner ou logo) */
-.senai-login-header {
-  background: #C00000; /* cor vermelha SENAI (aprox.) */
+.senai-login-aside {
+  background: #06104b;
   padding: 20px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  gap: 30px;
+  height: 100%;
 }
+
 .senai-logo {
   max-height: 60px;
   /* Ajuste conforme a imagem real */
@@ -47,7 +59,7 @@ body, html {
   padding: 25px;
   background: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -63,11 +75,13 @@ body, html {
   text-align: left;
   margin-bottom: 15px;
 }
+
 .input-group label {
   display: block;
   margin-bottom: 5px;
   color: #333;
 }
+
 .input-group input {
   width: 100%;
   padding: 10px;
@@ -79,7 +93,7 @@ body, html {
 .senai-login-container button {
   width: 100%;
   padding: 12px;
-  background: #C00000;
+  background: #06104b;
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -88,8 +102,10 @@ body, html {
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
 .senai-login-container button:hover {
-  background: #A00000; /* tom mais escuro no hover */
+  background: #06104b;
+  /* tom mais escuro no hover */
 }
 
 /* Rodapé */
@@ -99,4 +115,42 @@ body, html {
   background: #ECECEC;
   color: #666;
   font-size: 0.9rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.aside-image {
+  min-height: 400px;
+}
+
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 1.3rem + 2px);
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #3F4254;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border: 1px solid #E4E6EF;
+  border-radius: 0.42rem;
+  box-shadow: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input {
+  background-color: #F3F6F9;
+  border-color: #F3F6F9;
+  color: #3F4254;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }

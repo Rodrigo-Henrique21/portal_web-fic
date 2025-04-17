@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <title>Portal FIC - Login</title>
   <!-- Aponte para o CSS de acordo com sua rota configurada (/css/style.css, por exemplo) -->
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="senai-login-body">
-  <!-- Banner ou imagem de topo -->
-  <header class="senai-login-header">
-    <!-- Se quiser usar uma imagem como logo ou banner, coloque abaixo -->
-    <img src="/img/senai-logo.png" alt="SENAI Logo" class="senai-logo" />
-    <!-- Ou poderia ser um texto/heading simples -->
-    <!-- <h1>Portal FIC</h1> -->
-  </header>
 
-  <main class="senai-login-main">
-    <section class="senai-login-container">
-      <h2>Acesse sua conta</h2>
-      <form action="/login" method="POST">
-        <div class="input-group">
-          <label for="username">Usuário</label>
-          <input type="text" id="username" name="username" required>
-        </div>
+<body class="senai-login-body ">
+  <div class="flex h-full">
+    <aside class="senai-login-aside">
+      <img src="./img/senai-logo.png" alt="SENAI Logo" class="senai-logo" />
+      <h1>Portal FIC</h1>
+      <img src="./img/process-verify.svg" alt="SENAI Logo" class="senai-logo aside-image" />
 
-        <div class="input-group">
-          <label for="password">Senha</label>
-          <input type="password" id="password" name="password" required>
-        </div>
-        
-        <button type="submit">Entrar</button>
-      </form>
-    </section>
-  </main>
+    </aside>
 
-  <footer class="senai-login-footer">
+    <main class="senai-login-main">
+      <section class="senai-login-container">
+        <h2>Acesse sua conta</h2>
+        <form action="/login" method="POST">
+          <div class="input-group">
+            <label for="username">Usuário</label>
+            <input type="text" class="input form-control" id="username" name="username" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Senha</label>
+            <input class="input form-control" type="password" id="password" name="password" required>
+          </div>
+
+          <button type="submit">Entrar</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- <footer class="senai-login-footer">
     <p>© 2023 SENAI - Todos os direitos reservados</p>
-  </footer>
+  </footer> -->
 </body>
+
 </html>
