@@ -19,7 +19,7 @@
   <aside class="sidebar">
     <div class="logo-container">
       <!-- Ajuste a URL da imagem do SENAI -->
-      <img src="/img/senai-logo.png" alt="SENAI Logo" class="senai-logo">
+      <img src="./img/senai-logo.png" alt="SENAI Logo" class="senai-logo">
     </div>
 
     <nav class="menu">
@@ -28,11 +28,11 @@
         <i class="fa fa-external-link-alt"></i> Diário FIC
       </a>
       <!-- Botão que abre a seção de upload de Excel -->
-      <button class="menu-item" onclick="openUpload()">
+      <button class="menu-item" id="hours-charge-see-btn" onclick="openUpload()">
         <i class="fa fa-file-excel"></i> Carga Horária
       </button>
       <!-- Botão que abre a seção de calendário -->
-      <button class="menu-item" onclick="openCalendar()">
+      <button class="menu-item active-sidebar-item" id="calendar-see-btn" onclick="openCalendar()">
         <i class="fa fa-calendar-alt"></i> Calendário
       </button>
     </nav>
@@ -46,7 +46,7 @@
         Usuário: <strong>RODRIGO HENRIQUE CORREA</strong>
       </div>
       <!-- Botão de logout (exemplo) -->
-      <button class="logout-btn" onclick="window.location.href='/Login/Logout'">
+      <button class="logout-btn" onclick="window.location.replace('/Login/Logout')">
         <i class="fas fa-power-off"></i>
       </button>
     </header>
@@ -67,7 +67,7 @@
       </section>
 
       <!-- Seção de Calendário (oculta por padrão) -->
-      <section id="calendar-section" class="hidden">
+      <section id="calendar-section" class="">
         <h2>Calendário Completo</h2>
         <!-- Exemplo simples. Substitua por um plugin JS de calendário, se preferir -->
         <p>(Em desenvolvimento... Você pode integrar um plugin de calendário aqui.)</p>
@@ -77,14 +77,25 @@
 
   <!-- JavaScript básico -->
   <script>
-    function openUpload() {
-      // Mostra a seção de upload e esconde a de calendário
+    function openUpload(e) {
+      // Mostra a seção de upload e esconde a de calendário      
+      const hoursChargeSidebarItem = document.querySelector('#hours-charge-see-btn')
+      const calendarSidebarItem = document.querySelector('#calendar-see-btn')
+      calendarSidebarItem.classList.remove("active-sidebar-item")
+      hoursChargeSidebarItem.classList.toggle("active-sidebar-item")
+
+
       document.getElementById('upload-section').classList.remove('hidden');
       document.getElementById('calendar-section').classList.add('hidden');
     }
 
-    function openCalendar() {
+    function openCalendar(e) {
       // Mostra a seção de calendário e esconde a de upload
+      const hoursChargeSidebarItem = document.querySelector('#hours-charge-see-btn')
+      const calendarSidebarItem = document.querySelector('#calendar-see-btn')
+      hoursChargeSidebarItem.classList.remove("active-sidebar-item")
+      calendarSidebarItem.classList.toggle("active-sidebar-item")
+
       document.getElementById('calendar-section').classList.remove('hidden');
       document.getElementById('upload-section').classList.add('hidden');
     }

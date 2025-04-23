@@ -1,124 +1,141 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body, html {
-    height: 100%;
-    font-family: 'Poppins', Arial, sans-serif;
-    background: #f2f2f2; /* Fundo cinza claro */
-  }
-  
-  /* Sidebar lateral azul */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 100%;
-    background-color: #06104b; /* Azul escuro SENAI */
-    padding: 20px 10px;
-  }
-  
-  .logo-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .senai-logo {
-    max-height: 50px; /* Ajuste conforme necessário */
-  }
-  
-  /* Menu da sidebar */
-  .menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* espaço entre itens */
-  }
-  
-  .menu-item {
-    display: block;
-    padding: 10px;
-    color: #fff;
-    background: transparent;
-    border: none;
-    text-align: left;
-    text-decoration: none;
-    font-size: 0.95rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.3s;
-  }
-  
-  .menu-item i {
-    margin-right: 8px;
-  }
-  
-  .menu-item:hover {
-    background: #0a1a6b; /* tom mais claro do azul */
-  }
-  
-  .menu-item:focus {
-    outline: none;
-  }
-  
-  /* Conteúdo principal */
-  .main-content {
-    margin-left: 220px; /* mesma largura da sidebar */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Topbar */
-  .topbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 10px 20px;
-    background: #fff;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .user-info {
-    margin-right: 20px;
-    font-size: 0.95rem;
-  }
-  
-  .logout-btn {
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
-  
-  .logout-btn:hover {
-    color: #000;
-  }
-  
-  /* Área de conteúdo */
-  .content-area {
-    padding: 20px;
-    flex: 1;
-  }
-  
-  .content-area h1 {
-    margin-bottom: 15px;
-  }
-  
-  /* Seções de upload e calendário */
-  .hidden {
-    display: none;
-  }
-  
-  #upload-section, #calendar-section {
-    background: #fff;
-    border-radius: 6px;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f2f2f2;
+  /* Fundo cinza claro */
+}
+
+/* Sidebar lateral azul */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #06104b;
+  /* Azul escuro SENAI */
+  padding: 20px 10px;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.senai-logo {
+  max-height: 50px;
+  /* Ajuste conforme necessário */
+}
+
+/* Menu da sidebar */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* espaço entre itens */
+}
+
+.menu-item {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.menu-item i {
+  margin-right: 8px;
+}
+
+.menu-item:hover {
+  background: #0a1a6b;
+  /* tom mais claro do azul */
+}
+
+.menu-item:focus {
+  outline: none;
+}
+
+/* Conteúdo principal */
+.main-content {
+  margin-left: 220px;
+  /* mesma largura da sidebar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-info {
+  margin-right: 20px;
+  font-size: 0.95rem;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  color: #000;
+}
+
+/* Área de conteúdo */
+.content-area {
+  padding: 20px;
+  flex: 1;
+}
+
+.content-area h1 {
+  margin-bottom: 15px;
+}
+
+/* Seções de upload e calendário */
+.hidden {
+  display: none;
+}
+
+#upload-section,
+#calendar-section {
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.active-sidebar-item {
+  background-color: #2772ff;
+  color: #fff;
+}
+
+.active-sidebar-item:hover {
+  background-color: #2772ff;
+
+}
