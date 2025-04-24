@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <!-- Exemplo de CSS próprio -->
-  <link rel="stylesheet" href="./css/portal.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
 
 </head>
 
@@ -19,7 +19,7 @@
   <aside class="sidebar">
     <div class="logo-container">
       <!-- Ajuste a URL da imagem do SENAI -->
-      <img src="./img/senai-logo.png" alt="SENAI Logo" class="senai-logo">
+      <img src="{{ url_for('static', filename='img/senai-logo.png') }}" alt="SENAI Logo" class="senai-logo">
     </div>
 
     <nav class="menu">
@@ -70,7 +70,7 @@
       <section id="calendar-section" class="">
         <h2>Calendário Completo</h2>
         <!-- Exemplo simples. Substitua por um plugin JS de calendário, se preferir -->
-        <p>(Em desenvolvimento... Você pode integrar um plugin de calendário aqui.)</p>
+        <p>(Em desenvolvimento...)</p>
       </section>
     </main>
   </div>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Página Principal</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <script src="/js/main.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script> 
 </head>
 <body>
   <div class="app-container">
@@ -12,9 +12,9 @@
     <nav class="sidebar">
       <h2>Menu</h2>
       <ul>
-        <li><a href="https://www.google.com" target="_blank">Google</a></li>
-        <li><a href="https://github.com" target="_blank">GitHub</a></li>
-        <li><a href="https://stackoverflow.com" target="_blank">StackOverflow</a></li>
+        <li><a href="https://portalrh.sesisenaisp.org.br/arte/" target="_blank">SAP</a></li>
+        <li><a href="https://diariofic.sp.senai.br/" target="_blank">Diario</a></li>
+        <li><a href="https://www.sp.senai.br/" target="_blank">Intranet</a></li>
       </ul>
       <a href="/logout" class="logout-button">Sair</a>
     </nav>

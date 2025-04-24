@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <title>Portal FIC - Login</title>
-  <!-- Aponte para o CSS de acordo com sua rota configurada (/css/style.css, por exemplo) -->
-  <link rel="stylesheet" href="./css/style.css">
+  <!-- Caminho correto usando url_for para CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-<body class="senai-login-body ">
+<body class="senai-login-body">
   <div class="flex h-full">
     <aside class="senai-login-aside">
-      <img src="./img/senai-logo.png" alt="SENAI Logo" class="senai-logo" />
+      <!-- Caminho correto para imagem -->
+      <img src="{{ url_for('static', filename='img/senai-logo.png') }}" alt="SENAI Logo" class="senai-logo" />
       <h1>Portal FIC</h1>
-      <img src="./img/process-verify.svg" alt="SENAI Logo" class="senai-logo aside-image" />
-
+      <img src="{{ url_for('static', filename='img/process-verify.svg') }}" alt="Processo" class="senai-logo aside-image" />
     </aside>
 
     <main class="senai-login-main">
@@ -36,10 +35,5 @@
       </section>
     </main>
   </div>
-
-  <!-- <footer class="senai-login-footer">
-    <p>© 2023 SENAI - Todos os direitos reservados</p>
-  </footer> -->
 </body>
-
 </html>
