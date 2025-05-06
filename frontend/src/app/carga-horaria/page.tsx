@@ -6,7 +6,7 @@ export default function Home() {
     <div className="min-h-screen">
       <main className="flex">
         <Sidebar />
-        <div className="flex flex-col ">
+        <div className="flex flex-col w-full">
           <Header />
           <div className="content px-4">
             <h1>Bem-vindo(a)!</h1>

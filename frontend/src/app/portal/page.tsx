@@ -5,7 +5,7 @@ export default function Home() {
     <div className="min-h-screen">
       <main className="flex">
         <Sidebar />
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
           <h1>Bem-vindo(a)!</h1>
           <p>Você está na página principal após login.</p>
         </div>
