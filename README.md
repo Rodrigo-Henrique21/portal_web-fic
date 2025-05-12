@@ -1,80 +1,36 @@
-# 🚀 Portal de Centralização de Sistemas - SENAI
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Este projeto é um **portal desenvolvido para centralizar diversos sistemas utilizados pelo SENAI**, com foco na **educação continuada**. Seu principal objetivo é resolver a fragmentação dos sistemas atuais, proporcionando uma **solução única e integrada** que facilita as rotinas administrativas dos instrutores.
+## Getting Started
 
----
+First, run the development server:
 
-## 🌟 Funcionalidades
-
-- **Centralização de sistemas**  
-  Integra plataformas como **Intranet**, **Diário de Classe**, **Carga Horária**, entre outros. 📚
-
-- **Gestão administrativa simplificada**  
-  Torna os processos administrativos mais acessíveis e intuitivos para os instrutores. 🧑‍🏫
-
-- **Integração de novos usuários**  
-  Permite a **inclusão fácil e rápida** de novos usuários no sistema. 👥
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-- **Python** – Linguagem principal no back-end. 🐍  
-- **Flask** – Framework leve e eficiente para desenvolvimento web. ⚙️  
-- **HTML** – Estruturação das páginas do portal. 🌐  
-- **CSS** – Estilização para uma interface visual agradável. 🎨
-
----
-
-## 📁 Estrutura do Projeto
-
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-├── front/               # Arquivos de front-end
-│   ├── index.html       # Página inicial
-│   ├── portal.html
-│   ├── login.html
-│   ├── calendario.html           
-│   └── css       # Arquivo de estilo
-│        ├── portal.css
-│        └── style.css 
-├── back/                # Arquivos de back-end
-│   └── app.py           # Arquivo principal de backend
-├── requirements.txt     # Dependências do projeto
-└── README.md            # Documentação
-```
-## Como Rodar o Projeto 🚗
-Pré-requisitos 🔧
-Certifique-se de ter o Python instalado em seu sistema. 🐍
 
-## Instale as dependências do projeto com o seguinte comando:
-```
-pip install -r requirements.txt
-Rodando o Servidor 🖥️
-Navegue até a pasta onde o projeto está localizado.
-Execute o arquivo app.py para iniciar o servidor:
-python back/app.py
-Acesse o portal em http://servidor:5000 pelo seu navegador. 🌍
-```
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🔄 Como Funciona
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-1. O **Flask** está configurado para servir as páginas HTML através de rotas definidas no `app.py`.
-2. Ao iniciar o servidor (`python app.py`), o portal roda.
-3. As páginas HTML são renderizadas dinamicamente com suporte de arquivos CSS para estilização.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-## 🤝 Contribuindo
+To learn more about Next.js, take a look at the following resources:
 
-1. Faça um **fork** deste repositório 🍴  
-2. Crie uma **branch** para sua funcionalidade  
-   ```bash
-   git checkout -b feature/nome-da-feature
-   ```
-3.Faça suas alterações e faça o commit (git commit -am 'Adiciona nova funcionalidade'). 📝
-4.Envie para o repositório remoto (git push origin feature/nome-da-feature). 🚀
-5.Abra um pull request para revisão. 🔄
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Licença 📜
-- Este projeto é licenciado sob a MIT License. 🛡️
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
