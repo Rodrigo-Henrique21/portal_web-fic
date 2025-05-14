@@ -1,5 +1,8 @@
 name: Build and deploy Node.js app to Azure Web App - portateste
 
+permissions:
+  id-token: write      # necessário para Azure OIDC login
+  contents: read       # necessário para checkout e download-artifact
 on:
   push:
     branches:
