@@ -1,14 +1,12 @@
 name: Build and deploy Node.js app to Azure Web App - portateste
 
-# Permissões para OIDC e checkout
 permissions:
-  id-token: write
-  contents: read
+  id-token: write           # para OIDC
+  contents: read            # para checkout e artifact
 
 on:
   push:
-    branches:
-      - migration-to-next
+    branches: [ migration-to-next ]
   workflow_dispatch:
 
 jobs:
@@ -52,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: Production
+      name: Production   # certifica que o OIDC subject será "...:environment:Production"
 
     steps:
       - name: Download artifact
@@ -60,12 +58,11 @@ jobs:
         with:
           name: node-app
 
-      - name: Azure Login via Managed Identity
+      - name: Azure Login via Managed Identity (UAMI)
         uses: azure/login@v2
         with:
-          auth-type: ManagedIdentity
-          # client-id da sua User-Assigned Managed Identity (GUID)
-          client-id: ${{ secrets.UAMI_CLIENT_ID }}
+          auth-type: identity
+          client-id: ${{ secrets.UAMI_CLIENT_ID }}        # GUID da sua UAMI
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
