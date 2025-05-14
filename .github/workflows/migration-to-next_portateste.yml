@@ -1,6 +1,6 @@
 name: Build and deploy Node.js app to Azure Web App - portateste
 
-# libera o token OIDC e o checkout
+# Permissões para OIDC e checkout
 permissions:
   id-token: write
   contents: read
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: Production   # isso faz o OIDC subject ser “repo:...:environment:Production”
+      name: Production
 
     steps:
       - name: Download artifact
@@ -63,11 +63,11 @@ jobs:
       - name: Azure Login via Managed Identity
         uses: azure/login@v2
         with:
-          use-managed-identity: true
-          # pode ser o clientId ou o resourceId da sua UAMI:
-          identity-id: /subscriptions/SEU_SUBSCRIPTION_ID/resourceGroups/rg-teste-webapp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/portateste-800e
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_415BB9ADB58B42EFBB536A9E4CCCC173 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1D18051F58784C2D916B2C23570E00A9 }}
+          auth-type: ManagedIdentity
+          # client-id da sua User-Assigned Managed Identity (GUID)
+          client-id: ${{ secrets.UAMI_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Enable Run-From-Package
         uses: azure/CLI@v1
