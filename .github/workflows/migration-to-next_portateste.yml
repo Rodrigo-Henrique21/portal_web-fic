@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - portateste
 
 on:
@@ -12,27 +9,36 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
-      - name: npm install, build, and test
+      - name: Install dependencies
         run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm ci
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+      - name: Build Next.js
+        run: npm run build
 
-      - name: Upload artifact for deployment job
+      - name: Prune devDependencies
+        run: npm prune --production
+
+      - name: Package release.zip
+        run: |
+          zip -r release.zip \
+            .next \
+            node_modules \
+            public \
+            package.json \
+            next.config.js
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
@@ -41,34 +47,34 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
 
     steps:
-      - name: Download artifact from build job
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
-      
-      - name: Login to Azure
+      - name: Azure Login
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_ADF2A75C1AFD42C1AD5E7A1D5781D51E }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_415BB9ADB58B42EFBB536A9E4CCCC173 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1D18051F58784C2D916B2C23570E00A9 }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Configure Run-From-Package
+        uses: azure/CLI@v1
+        with:
+          azcliversion: '2.33.0'
+          inlineScript: |
+            az webapp config appsettings set \
+              --resource-group rg-teste-webapp \
+              --name portateste \
+              --settings WEBSITE_RUN_FROM_PACKAGE=1 SCM_DO_BUILD_DURING_DEPLOYMENT=false
+
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'portateste'
           slot-name: 'Production'
-          package: .
-          
+          package: release.zip
