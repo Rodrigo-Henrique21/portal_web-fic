@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 export default function Home() {
-  redirect("/login");
+  redirect("/portal");
   return <div className="min-h-screen"></div>;
 }

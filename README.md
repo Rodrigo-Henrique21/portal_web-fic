@@ -51,17 +51,23 @@ Certifique-se de ter o Python instalado em seu sistema. 🐍
 pip install -r requirements.txt
 Rodando o Servidor 🖥️
 Navegue até a pasta onde o projeto está localizado.
-Execute o arquivo app.py para iniciar o servidor:
-python back/app.py
+Execute os comandas a baixo depois de instalar o NODE para iniciar o servidor:
+npm install
 Acesse o portal em http://servidor:5000 pelo seu navegador. 🌍
 ```
 ---
 
 ## 🔄 Como Funciona
 
-1. O **Flask** está configurado para servir as páginas HTML através de rotas definidas no `app.py`.
-2. Ao iniciar o servidor (`python app.py`), o portal roda.
-3. As páginas HTML são renderizadas dinamicamente com suporte de arquivos CSS para estilização.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
 ---
 
