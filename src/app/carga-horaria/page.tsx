@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
+import { TableCargaHoraria } from "@/components/tableCargaHoraria";
 import { SheetUpload } from "@/components/uploadSheet";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
           <Header />
           <div className="content px-4">
             <SheetUpload />
+             <TableCargaHoraria />
           </div>
         </div>
       </main>

@@ -2,7 +2,16 @@
 
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Typography,
+  Box
+} from "@mui/material";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase-config";
 
@@ -44,19 +53,41 @@ export const SheetUpload = () => {
   };
 
   return (
-    <div className="my-4">
-      <input type="file" accept=".xlsx,.xls" onChange={handleFileUpload} />
+    <Box className="my-4">
+      <input
+        id="file-upload"
+        type="file"
+        accept=".xlsx,.xls"
+        onChange={handleFileUpload}
+        hidden
+      />
+      <label htmlFor="file-upload">
+        <Button
+          component="span"
+          variant="contained"
+          startIcon={<UploadFileIcon />}
+          sx={{
+            backgroundColor: "#1976d2",
+            textTransform: "none",
+            fontWeight: "bold",
+            ":hover": { backgroundColor: "#115293" }
+          }}
+        >
+          Enviar planilha de carga horária
+        </Button>
+      </label>
+
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="md" fullWidth>
         <DialogTitle>Pré-visualização dos dados</DialogTitle>
         <DialogContent dividers>
           {Object.entries(dataBySheet).map(([sheet, rows]) => (
-            <div key={sheet}>
-              <h3><strong>{sheet}</strong></h3>
-              <table className="w-full border my-2 text-xs">
+            <Box key={sheet} my={2}>
+              <Typography variant="h6" gutterBottom>{sheet}</Typography>
+              <table className="w-full border text-sm">
                 <thead>
                   <tr>
                     {Object.keys(rows[0] || {}).map((key) => (
-                      <th key={key} className="border px-2 py-1">{key}</th>
+                      <th key={key} className="border px-2 py-1 bg-gray-100">{key}</th>
                     ))}
                   </tr>
                 </thead>
@@ -70,7 +101,7 @@ export const SheetUpload = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </Box>
           ))}
         </DialogContent>
         <DialogActions>
@@ -78,6 +109,6 @@ export const SheetUpload = () => {
           <Button variant="contained" onClick={handleSave}>Salvar</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
 };
