@@ -1,5 +1,7 @@
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
+import { TableCargaHoraria } from "@/components/tableCargaHoraria";
+import { SheetUpload } from "@/components/uploadSheet";
 
 export default function Home() {
   return (
@@ -9,8 +11,8 @@ export default function Home() {
         <div className="flex flex-col w-full">
           <Header />
           <div className="content px-4">
-            <h1>Bem-vindo(a)!</h1>
-            <p>Você está na página principal após login.</p>
+            <SheetUpload />
+             <TableCargaHoraria />
           </div>
         </div>
       </main>
