@@ -10,7 +10,10 @@ export const login = async (email: string, password: string) => {
     Cookies.set("authToken", token, { expires: 1 }); // 1 dia
 
     return userCredential.user;
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
+    throw new Error(String(error));
   }
 };

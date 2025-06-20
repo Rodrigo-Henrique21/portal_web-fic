@@ -16,7 +16,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase-config";
 
 export const SheetUpload = () => {
-  const [dataBySheet, setDataBySheet] = useState<Record<string, any[]>>({});
+  const [dataBySheet, setDataBySheet] = useState<
+    Record<string, Record<string, unknown>[]>
+  >({});
   const [open, setOpen] = useState(false);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +30,7 @@ export const SheetUpload = () => {
       const data = new Uint8Array(evt.target?.result as ArrayBuffer);
       const workbook = XLSX.read(data, { type: "array" });
 
-      const parsedData: Record<string, any[]> = {};
+      const parsedData: Record<string, Record<string, unknown>[]> = {};
       workbook.SheetNames.forEach((sheetName) => {
         const sheet = workbook.Sheets[sheetName];
         parsedData[sheetName] = XLSX.utils.sheet_to_json(sheet, { defval: "" });
@@ -94,8 +96,8 @@ export const SheetUpload = () => {
                 <tbody>
                   {rows.map((row, idx) => (
                     <tr key={idx}>
-                      {Object.values(row).map((val: any, i) => (
-                        <td key={i} className="border px-2 py-1">{val}</td>
+                      {Object.values(row).map((val, i) => (
+                        <td key={i} className="border px-2 py-1">{String(val)}</td>
                       ))}
                     </tr>
                   ))}

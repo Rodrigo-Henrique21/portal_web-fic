@@ -16,9 +16,13 @@ import {
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase-config";
 
+interface CargaHorariaRow {
+  [key: string]: unknown;
+}
+
 interface CargaHorariaDoc {
   professor: string;
-  horarios: any[];
+  horarios: CargaHorariaRow[];
 }
 
 export const TableCargaHoraria = () => {
