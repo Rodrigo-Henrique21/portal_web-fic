@@ -51,8 +51,15 @@ Certifique-se de ter o Python instalado em seu sistema. 🐍
 pip install -r requirements.txt
 Rodando o Servidor 🖥️
 Navegue até a pasta onde o projeto está localizado.
-Execute os comandas a baixo depois de instalar o NODE para iniciar o servidor:
+Execute os comandos abaixo depois de instalar o NODE para iniciar o servidor:
 npm install
+
+### Configuração de Ambiente
+
+1. Copie o arquivo `.env.example` para `.env.local` e preencha com suas credenciais do Firebase.
+2. Em ambientes de produção, defina essas variáveis como **GitHub Secrets** para evitar chaves expostas.
+3. O workflow `CI` usa esses secrets para disponibilizar as variáveis de ambiente durante a execução.
+
 Acesse o portal em http://servidor:5000 pelo seu navegador. 🌍
 ```
 ---
