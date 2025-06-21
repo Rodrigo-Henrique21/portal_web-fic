@@ -26,4 +26,14 @@ if (firebaseConfig.apiKey) {
   db = {} as Firestore;
 }
 
+if (firebaseConfig.apiKey) {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+} else {
+  // Fallback placeholders to avoid initialization errors during build
+  auth = {} as Auth;
+  db = {} as Firestore;
+}
+
 export { auth, db };
