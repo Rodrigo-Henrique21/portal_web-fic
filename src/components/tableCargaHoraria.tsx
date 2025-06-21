@@ -78,8 +78,8 @@ export const TableCargaHoraria = () => {
               <TableBody>
                 {docs[tabIndex].horarios.map((row, idx) => (
                   <TableRow key={idx}>
-                    {Object.values(row).map((val: any, i) => (
-                      <TableCell key={i}>{val}</TableCell>
+                    {Object.values(row).map((val, i) => (
+                      <TableCell key={i}>{String(val)}</TableCell>
                     ))}
                   </TableRow>
                 ))}
