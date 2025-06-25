@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, getDocs, addDoc, doc, setDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {
   Dialog, DialogTitle, DialogContent, DialogActions,
@@ -12,14 +12,29 @@ import { db, auth } from "@/lib/firebase-config";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
 
+interface Usuario {
+  id: string;
+  nome: string;
+  email: string;
+  role: string;
+}
+
 export default function UsuariosPage() {
-  const [usuarios, setUsuarios] = useState<any[]>([]);
+  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({ nome: "", email: "", senha: "", role: "user" });
+  const [form, setForm] = useState<{
+    nome: string;
+    email: string;
+    senha: string;
+    role: string;
+  }>({ nome: "", email: "", senha: "", role: "user" });
 
   const fetchUsers = async () => {
     const snapshot = await getDocs(collection(db, "users"));
-    const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const data: Usuario[] = snapshot.docs.map((docSnap) => ({
+      id: docSnap.id,
+      ...(docSnap.data() as Omit<Usuario, "id">),
+    }));
     setUsuarios(data);
   };
 
@@ -42,7 +57,7 @@ export default function UsuariosPage() {
       setForm({ nome: "", email: "", senha: "", role: "user" });
       setOpen(false);
       fetchUsers();
-    } catch (error) {
+    } catch {
       alert("Erro ao criar usuário");
     }
   };

@@ -13,7 +13,12 @@ import {
   TableBody,
   Paper
 } from "@mui/material";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  QueryDocumentSnapshot,
+  DocumentData,
+} from "firebase/firestore";
 import { db } from "@/lib/firebase-config";
 
 interface CargaHorariaRow {
@@ -32,10 +37,12 @@ export const TableCargaHoraria = () => {
   useEffect(() => {
     const fetchData = async () => {
       const snapshot = await getDocs(collection(db, "carga-horaria"));
-      const data: CargaHorariaDoc[] = snapshot.docs.map((doc) => ({
-        professor: doc.data().professor,
-        horarios: doc.data().horarios,
-      }));
+      const data: CargaHorariaDoc[] = snapshot.docs.map(
+        (docSnap: QueryDocumentSnapshot<DocumentData>) => ({
+          professor: docSnap.data().professor as string,
+          horarios: docSnap.data().horarios as CargaHorariaRow[],
+        })
+      );
       setDocs(data);
     };
 
@@ -78,7 +85,7 @@ export const TableCargaHoraria = () => {
               <TableBody>
                 {docs[tabIndex].horarios.map((row, idx) => (
                   <TableRow key={idx}>
-                    {Object.values(row).map((val, i) => (
+                    {Object.values(row).map((val: unknown, i) => (
                       <TableCell key={i}>{String(val)}</TableCell>
                     ))}
                   </TableRow>
