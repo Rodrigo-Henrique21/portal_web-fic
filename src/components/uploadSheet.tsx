@@ -26,7 +26,7 @@ export const SheetUpload = () => {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (evt) => {
+    reader.onload = (evt: ProgressEvent<FileReader>) => {
       const data = new Uint8Array(evt.target?.result as ArrayBuffer);
       const workbook = XLSX.read(data, { type: "array" });
 
@@ -96,7 +96,7 @@ export const SheetUpload = () => {
                 <tbody>
                   {rows.map((row, idx) => (
                     <tr key={idx}>
-                      {Object.values(row).map((val, i) => (
+                      {Object.values(row).map((val: unknown, i) => (
                         <td key={i} className="border px-2 py-1">{String(val)}</td>
                       ))}
                     </tr>
