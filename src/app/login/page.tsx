@@ -16,7 +16,7 @@ export default function Home() {
     e.preventDefault();
     try {
       await login(username, password);
-      router.push("/portal");
+      router.push("/carga-horaria");
     } catch (error) {
       alert("Erro ao logar: " + (error as Error).message);
     }
